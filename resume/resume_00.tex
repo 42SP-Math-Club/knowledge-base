@@ -133,10 +133,10 @@ Esse é exatamente o $f(S)$ do problema. Cada bit $b_i$ registra a presença ou 
 
 \subsection{Etapa 2 --- Generalização para Base 3 (Breno)}
 
-A primeira ideia de generalização veio do Breno: e se o conjunto $S$ fosse \textit{ordenado}? Um elemento poderia estar presente de duas formas distintas --- ordenado ou desordenado. Isso naturalmente pede uma terceira condição, e portanto uma base 3:
+A primeira ideia de generalização veio do Breno: e se o conjunto $S$ fosse \textit{ordenado}? Um elemento poderia estar presente de duas formas distintas --- presente sem ordem, ou presente e sendo o elemento de maior posição. Isso naturalmente pede uma terceira condição, e portanto uma base 3:
 
 $$
-T_i = \begin{cases} 0 & \text{se } x_i \notin S \\ 1 & \text{se } x_i \in S \text{ e não está ordenado} \\ 2 & \text{se } x_i \in S \text{ e está ordenado } \end{cases}
+T_i = \begin{cases} 0 & \text{se } x_i \notin S \\ 1 & \text{se } x_i \in S \text{ e não está ordenado} \\ 2 & \text{se } x_i \in S \text{ e está ordenado (é o último)} \end{cases}
 $$
 
 Com isso, a string resultante deixa de ser binária e passa a ser ternária --- cada dígito carrega mais informação sobre a estrutura do conjunto.
@@ -163,6 +163,11 @@ A conexão com \texttt{atoi\_base} foi o que permitiu enxergar a estrutura geral
 \begin{infobox}
   O problema, a generalização para base 3 e a função $R_i$ foram inteiramente inventados pelo grupo durante a sessão. Nenhuma referência externa foi consultada.
 \end{infobox}
+
+\begin{tcolorbox}[enhanced, colback=white, colframe=cinza!50, boxrule=0.8pt, arc=4pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt]
+  \textbf{Nota:} A Etapa 3 não foi verificada. O grupo chegou até essa formulação, mas ainda não houve tempo para pensar com cuidado se ela está correta ou completa. Pode ser que fique como ponto de partida para a próxima sessão.
+\end{tcolorbox}
 
 \section{Observações sobre o Formato}
 
