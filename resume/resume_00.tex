@@ -1,0 +1,187 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{amsmath, amssymb}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\geometry{top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm,headheight=15pt}
+
+\definecolor{azul42}{HTML}{1F3A8A}
+\definecolor{azulclaro}{HTML}{E8EEF9}
+\definecolor{cinza}{HTML}{555555}
+
+\hypersetup{colorlinks=true,linkcolor=azul42,urlcolor=azul42}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\color{azul42}\small\textit{Clube de Matemática @ 42 São Paulo}}
+\fancyhead[R]{\color{cinza}\small\textit{Reunião \#000}}
+\fancyfoot[C]{\color{cinza}\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\color{azul42}\hrule width\headwidth height\headrulewidth}
+\renewcommand{\footrulewidth}{0pt}
+
+\titleformat{\section}
+  {\color{azul42}\Large\bfseries}{\thesection.}{0.6em}{}
+  [\vspace{2pt}{\color{azul42}\titlerule[1.5pt]}\vspace{4pt}]
+\titleformat{\subsection}{\color{azul42}\large\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing{\section}{0pt}{18pt}{8pt}
+\titlespacing{\subsection}{0pt}{12pt}{6pt}
+
+\setlist[itemize]{leftmargin=1.5em,itemsep=3pt,parsep=0pt,topsep=4pt,
+  label={\color{azul42}\textbullet}}
+
+\newtcolorbox{infobox}[1][]{enhanced,breakable,
+  colback=azulclaro,colframe=azul42,boxrule=0.8pt,arc=4pt,
+  left=8pt,right=8pt,top=6pt,bottom=6pt,#1}
+
+\newtcolorbox{citacao}{enhanced,breakable,
+  colback=white,colframe=azul42!30,boxrule=0pt,leftrule=3pt,arc=0pt,
+  left=10pt,right=8pt,top=4pt,bottom=4pt,
+  fontupper=\itshape\color{cinza}}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+  \vspace*{2cm}
+  {\fontsize{48}{48}\selectfont\color{azul42}$\Sigma$}\\[0.6cm]
+  {\fontsize{26}{30}\selectfont\color{azul42}\textbf{Reunião \#000}}\\[0.3cm]
+  {\fontsize{14}{18}\selectfont\color{cinza}Sessão Inaugural --- Clube de Matemática @ 42 São Paulo}\\[0.8cm]
+  {\color{azul42}\rule{0.5\textwidth}{1pt}}\\[0.6cm]
+  {\normalsize\color{cinza}30 de abril de 2026}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{infobox}
+  \textbf{Formato:} Exploração coletiva sem cronômetro\\
+  \textbf{Tema:} Questão proposta pelo grupo --- generalização de conversões de base numérica\\
+  \textbf{Referências externas consultadas:} Nenhuma
+\end{infobox}
+
+\newpage
+
+\section{Apresentações}
+
+A sessão começou com cada membro apresentando seu nível de contato com a matemática --- do ensino médio a graduações em exatas. Não houve hierarquia nisso: o objetivo era entender de onde cada um parte, não classificar quem sabe mais.
+
+Essa diversidade foi imediatamente útil. Ao longo da sessão, quem tinha mais base ajudava naturalmente quem tinha menos, sem que isso precisasse ser organizado.
+
+\section{O Problema}
+
+O problema da sessão foi uma representação matemática de \textit{Bit Masking} --- tema diretamente ligado ao cursus da 42.
+
+Seja $U$ um conjunto universal finito com cinco variáveis:
+$$U = \{x_0,\, x_1,\, x_2,\, x_3,\, x_4\}$$
+
+Seja $S$ qualquer subconjunto de $U$ (ou seja, $S \subseteq U$). Definimos uma função característica $f(S)$ que mapeia um conjunto $S$ para uma string binária de 5 bits.
+
+A função avalia os elementos de $S$ usando uma condição lógica para gerar cada bit $b_i$ da string $b_4b_3b_2b_1b_0$:
+$$
+b_i =
+\begin{cases}
+    1 & \text{se } x_i \in S \\
+    0 & \text{se } x_i \notin S
+\end{cases}
+$$
+
+\noindent(Nota: $b_0$ representa o bit menos significativo, à direita, correspondente a $x_0$.)
+
+Dados os subconjuntos:
+$$A = \{x_0,\, x_2,\, x_3\} \qquad B = \{x_1,\, x_2,\, x_4\}$$
+
+\begin{enumerate}
+  \item Qual é $f(A)$?
+  \item Qual é $f(B)$?
+\end{enumerate}
+
+\section{Como a Sessão Aconteceu}
+
+Ninguém sabia a resposta de antemão. O que aconteceu foi uma \textbf{pesquisa matemática coletiva e lenta} --- no bom sentido. Cada pessoa precisava externalizar seus pensamentos, suas ideias e, principalmente, suas dúvidas.
+
+\begin{citacao}
+``Nah, eu não sabia qual símbolo usar'' --- então só escreve por extenso mesmo, tipo: ``3 está no conjunto dos naturais''. A ideia é externalizar o que sabe, para assim os outros poderem aprender, ajudar e acompanhar.
+\end{citacao}
+
+Quando a notação faltava, o grupo simplesmente inventava a própria. A formalização veio depois, como abstração do que já havia sido pensado --- da mesma forma que a matemática foi construída historicamente.
+
+Não houve professor. Não houve cronômetro. O modelo foi o da \textbf{Grécia antiga}: pensar em voz alta, divergir, questionar e reconstruir o raciocínio coletivamente.
+
+\section{O Raciocínio}
+
+O raciocínio foi construído em três etapas, cada uma surgindo naturalmente da anterior.
+
+\subsection{Etapa 1 --- Representação Binária (Herom)}
+
+Herom começou desenhando e indagando: como representar formalmente se um elemento pertence ou não a um conjunto? A resposta imediata foi a função característica binária, que o grupo escreveu assim:
+
+$$
+b_i = \begin{cases} 1 & \text{se } x_i \in S \\ 0 & \text{se } x_i \notin S \end{cases}
+$$
+
+Esse é exatamente o $f(S)$ do problema. Cada bit $b_i$ registra a presença ou ausência de $x_i$ no subconjunto $S$.
+
+\subsection{Etapa 2 --- Generalização para Base 3 (Breno)}
+
+A primeira ideia de generalização veio do Breno: e se o conjunto $S$ fosse \textit{ordenado}? Um elemento poderia estar presente de duas formas distintas --- ordenado ou desordenado. Isso naturalmente pede uma terceira condição, e portanto uma base 3:
+
+$$
+T_i = \begin{cases} 0 & \text{se } x_i \notin S \\ 1 & \text{se } x_i \in S \text{ e não está ordenado} \\ 2 & \text{se } x_i \in S \text{ e está ordenado } \end{cases}
+$$
+
+Com isso, a string resultante deixa de ser binária e passa a ser ternária --- cada dígito carrega mais informação sobre a estrutura do conjunto.
+
+\subsection{Etapa 3 --- Generalização para Base $m$ (Felipe / \texttt{atoi\_base})}
+
+A partir da ideia do \texttt{atoi\_base} trazida por Felipe --- função que converte strings para inteiros em bases arbitrárias --- o grupo percebeu que as etapas anteriores eram casos particulares de uma função mais geral.
+
+Para qualquer base $m$, define-se $R_i$ como:
+
+$$
+R_i: \begin{cases}
+  n = \dfrac{x_i}{m} \\[6pt]
+  n_i = 0 & \text{se } x_i \notin S \\[4pt]
+  n_i = 1 & \text{se } x_i \in S \text{ (sendo } m \text{ a base de } S\text{)} \\[4pt]
+  n_j = \dfrac{x_j}{m} & \text{se } x_i \text{ for o último elemento}
+\end{cases}
+$$
+
+O exemplo produzido no quadro foi $\{x_1, x_0, x_3\}$, aplicando $R_i$ sobre esse subconjunto ordenado.
+
+A conexão com \texttt{atoi\_base} foi o que permitiu enxergar a estrutura geral: assim como \texttt{atoi} reconstrói um número a partir de seus dígitos em uma base qualquer, $R_i$ constrói uma representação posicional a partir da pertinência e ordem dos elementos em $S$.
+
+\begin{infobox}
+  O problema, a generalização para base 3 e a função $R_i$ foram inteiramente inventados pelo grupo durante a sessão. Nenhuma referência externa foi consultada.
+\end{infobox}
+
+\section{Observações sobre o Formato}
+
+Esta primeira sessão também serviu para apresentar o Estatuto do clube e discutir sua filosofia. Alguns pontos que emergiram na prática:
+
+\begin{itemize}
+  \item Pessoas sem base matemática formal conseguem fazer perguntas que avançam a discussão tanto quanto quem tem;
+  \item A ausência de pesquisa durante a sessão não foi uma limitação --- foi o que tornou o pensamento genuinamente coletivo;
+  \item Inventar notação antes de formalizá-la revelou \textit{por que} a notação matemática existe do jeito que existe.
+\end{itemize}
+
+\begin{citacao}
+A ideia é aprender do ``por que'' a matemática foi desenhada do jeito que é hoje --- descobrindo, igual como os matemáticos antigamente faziam.
+\end{citacao}
+
+\section{Próximos Passos}
+
+A ideia que ficou: cada membro deve mergulhar em textos, livros e referências \textbf{antes} da próxima sessão --- não para chegar com a resposta, mas para chegar com pensamentos, dúvidas e ideias que alimentem a discussão.
+
+O tema da próxima sessão emergirá do backlog coletivo.
+
+\end{document}
