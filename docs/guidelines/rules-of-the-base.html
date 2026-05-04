@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>rules-of-the-base</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../style.css
+style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">rules-of-the-base</h1>
+</header>
+<h1 id="regras-da-base-de-conhecimento">Regras da Base de
+Conhecimento</h1>
+<p>Estas convenções garantem que o repositório seja navegável e útil
+para todos os membros, agora e no futuro.</p>
+<hr />
+<h2 id="onde-cada-coisa-vai">Onde Cada Coisa Vai</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pasta</th>
+<th>O que pertence aqui</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>solutions/</code></td>
+<td>Solução completa e explicada de um problema</td>
+</tr>
+<tr class="even">
+<td><code>problems/</code></td>
+<td>Problemas propostos, ainda sem solução</td>
+</tr>
+<tr class="odd">
+<td><code>techniques/</code></td>
+<td>Estratégias reutilizáveis (ex.: indução, substituição,
+contradição)</td>
+</tr>
+<tr class="even">
+<td><code>explanations/</code></td>
+<td>Textos conceituais — o <em>porquê</em> de teoremas e ideias</td>
+</tr>
+<tr class="odd">
+<td><code>core-knowledge/</code></td>
+<td>Definições, axiomas e teoremas fundamentais</td>
+</tr>
+<tr class="even">
+<td><code>resources/cheat-sheets/</code></td>
+<td>Resumos de fórmulas e regras para consulta rápida</td>
+</tr>
+<tr class="odd">
+<td><code>resources/study-materials/</code></td>
+<td>Leituras externas, links e referências curadas</td>
+</tr>
+</tbody>
+</table>
+<p>Cada pasta de conteúdo (<code>solutions/</code>,
+<code>problems/</code>) é organizada por área: <code>logic/</code> ·
+<code>discrete-math/</code> · <code>algebra/</code> ·
+<code>probability/</code> · <code>algorithms/</code></p>
+<hr />
+<h2 id="nomenclatura-de-arquivos">Nomenclatura de Arquivos</h2>
+<ul>
+<li>Use letras minúsculas, sem acentos, com hífens no lugar de
+espaços</li>
+<li>Inclua o número do problema quando houver (ex:
+<code>project-euler-001</code>)</li>
+<li>Seja descritivo: prefira <code>sieve-of-eratosthenes</code> a
+<code>primes</code></li>
+</ul>
+<pre><code>solutions/
+└── algorithms/
+    ├── project-euler-001-multiples-3-5.md
+    ├── cses-binary-search.md
+    └── session-2026-04-21-strong-induction.md
+
+problems/
+└── algorithms/
+    └── project-euler-001-multiples-3-5.md</code></pre>
+<hr />
+<h2 id="estrutura-de-uma-entrada">Estrutura de uma Entrada</h2>
+<p>Toda solução deve seguir o <code>template-solution.md</code>. Os
+campos obrigatórios são:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Campo</th>
+<th>Obrigatório</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nome do problema</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Plataforma / Fonte</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Área</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Dificuldade</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Data</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Autor (login42)</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Problema</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Solução</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Conceitos Utilizados</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Análise</td>
+<td>⬜ recomendado</td>
+</tr>
+<tr class="odd">
+<td>Aprendizados</td>
+<td>⬜ recomendado</td>
+</tr>
+<tr class="even">
+<td>Referências</td>
+<td>⬜ opcional</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="qualidade-do-conteúdo">Qualidade do Conteúdo</h2>
+<ul>
+<li><strong>Explique, não apenas mostre.</strong> Código sem raciocínio
+não ensina nada.</li>
+<li><strong>Escreva para quem não resolveu o problema.</strong> A
+solução deve fazer sentido sem contexto externo.</li>
+<li><strong>Prefira clareza à elegância.</strong> Um código legível vale
+mais que um one-liner obscuro.</li>
+<li><strong>Use LaTeX para fórmulas</strong> quando o arquivo for
+referenciado no charter ou em materiais de sessão.</li>
+</ul>
+<hr />
+<h2 id="o-que-não-pertence-à-base">O Que Não Pertence à Base</h2>
+<ul>
+<li>Soluções copiadas sem explicação própria</li>
+<li>Rascunhos incompletos (salve localmente até estar pronto)</li>
+<li>Conteúdo não relacionado às áreas do clube</li>
+</ul>
+<hr />
+<h2 id="atualizações-e-correções">Atualizações e Correções</h2>
+<p>Qualquer membro pode corrigir ou complementar uma entrada existente.
+Ao fazer isso:</p>
+<ol type="1">
+<li>Mantenha o autor original no campo <strong>Autor</strong></li>
+<li>Adicione uma linha ao final:
+<code>&gt; Revisado por: login42 — AAAA-MM-DD</code></li>
+</ol>
+</body>
+</html>

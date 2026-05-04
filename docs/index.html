@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Knowledge Base — Clube de Matemática</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body{max-width:980px}
+.hero h1{font-size:2.4rem;border:none;padding:0}
+.hero p{color:var(--muted);margin:.25rem 0 0}
+.sec{margin-top:2.5rem;font-size:.75rem;font-family:monospace;
+     text-transform:uppercase;letter-spacing:.12em;
+     color:var(--muted);border-bottom:1px solid var(--border);
+     padding-bottom:.35rem}
+.grid{display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+      gap:1rem;margin:1rem 0 0}
+.card{background:var(--surface);border:1px solid var(--border);
+      border-radius:8px;padding:1.1rem 1.25rem}
+.card-t{font-size:.72rem;font-family:monospace;
+        text-transform:uppercase;letter-spacing:.1em;
+        color:var(--muted);margin-bottom:.6rem}
+.card ul{list-style:none}
+.card li{padding:.18rem 0;font-size:.88rem}
+.card a::before{content:"-> ";color:var(--border)}
+</style>
+</head>
+<body>
+<div class="hero"><h1>Knowledge Base</h1><p>Clube de Matemática</p></div>
+<p class="sec">guidelines</p><div class="grid"><div class="card">
+<p class="card-t">guidelines</p><ul>
+  <li><a href="guidelines/rules-of-the-base.html">rules-of-the-base</a></li>
+  <li><a href="guidelines/template-solution.html">template-solution</a></li>
+</ul></div></div>
+<p class="sec">readme</p><p><a href="README.html">README</a></p>
+</body></html>
