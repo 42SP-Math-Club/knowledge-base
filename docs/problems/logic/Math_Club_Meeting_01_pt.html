@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Herom Silva" />
+  <title>Math_Club_Meeting_01_pt</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../../style.css
+style.css" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="/usr/share/javascript/mathjax/MathJax.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Math_Club_Meeting_01_pt</h1>
+<p class="author">Herom Silva</p>
+<p class="date">Maio de 2026</p>
+</header>
+<h1 id="introdução">Introdução</h1>
+<p>Neste documento, apresentamos como a segunda reunião do Clube de
+Matemática é estruturado, junto com o problema central que guiará nossa
+discussão. Primeiro definiremos algumas notações que usaremos para
+enunciar o problema, junto com possíveis técnicas para resolvê-lo, uma
+generalização do problema e alguns recursos para explorá-lo com maior
+profundidade.</p>
+<h1 id="notação">Notação</h1>
+<p>Aqui definiremos a notação que utilizaremos no problema. Em livros de
+Lógica padrão veremos <span class="math inline">\(P\)</span> como uma
+proposição, isto é, uma sentença declarativa com um valor de verdade
+definido como <span class="math inline">\(Verdade\)</span> ou <span
+class="math inline">\(Falso\)</span>.</p>
+<p>Dizemos que <span class="math inline">\(P\)</span> tem valor <span
+class="math inline">\(Verdade\)</span> quando a proposição definida por
+<span class="math inline">\(P\)</span> é verdadeira, sendo um exemplo
+<span class="math display">\[P = \text{A Terra é um planeta}\]</span>
+<span class="math inline">\(P\)</span> é <span
+class="math inline">\(Verdade\)</span> porque a Terra é um planeta.</p>
+<p>Dizemos que <span class="math inline">\(P\)</span> tem valor <span
+class="math inline">\(Falso\)</span> quando a proposição definida por
+<span class="math inline">\(P\)</span> é falsa, sendo um exemplo <span
+class="math display">\[P = \text{A Lua é feita de queijo}\]</span> <span
+class="math inline">\(P\)</span> é <span
+class="math inline">\(Falso\)</span> porque a Lua não é feita de
+queijo.</p>
+<p>Podemos negar o valor de uma proposição pelo símbolo <span
+class="math inline">\(\neg\)</span> para obter seu valor inverso. Como
+exemplo <span class="math display">\[P = \text{A Terra é um
+planeta}\]</span> <span class="math display">\[\neg P = \text{A Terra
+não é um planeta}\]</span> Pode-se criar uma nova proposição usando
+operadores lógicos como <span class="math inline">\(\land\)</span> e
+<span class="math inline">\(\lor\)</span>, que representam
+respectivamente o gramatical “e”, “ou”. Como exemplo, podemos criar as
+seguintes proposições <span class="math display">\[P = \text{A Terra é
+um planeta}\]</span> <span class="math display">\[Q = \text{Ela tem
+água}\]</span> <span class="math display">\[P \land Q = \text{A Terra é
+um planeta e ela tem água} = Verdade\]</span> <span
+class="math display">\[P \lor Q = \text{A Terra é um planeta ou ela tem
+água} = Verdade\]</span></p>
+<p>Para uma proposição usando o operador <span
+class="math inline">\(\land\)</span> ser verdadeira, ambos <span
+class="math inline">\(P\)</span> e <span
+class="math inline">\(Q\)</span> devem ser verdadeiros, e para o <span
+class="math inline">\(\lor\)</span> precisamos que <span
+class="math inline">\(P\)</span> ou <span
+class="math inline">\(Q\)</span> sejam verdadeiros.</p>
+<p>Outros operadores conhecidos como operadores conectivos são <span
+class="math inline">\(\implies\)</span> e <span
+class="math inline">\(\iff\)</span>, eles representam respectivamente o
+gramatical “se então” e “se e somente se”. Como exemplo podemos criar as
+seguintes proposições <span class="math display">\[P = \text{Está
+chovendo}\]</span> <span class="math display">\[Q = \text{O chão está
+molhado}\]</span> <span class="math display">\[P \implies Q = \text{Se
+está chovendo então o chão está molhado} = Verdade\]</span> <span
+class="math display">\[P \iff Q = \text{Está chovendo se e somente se o
+chão está molhado} = Falso\]</span> Para uma proposição usando o
+operador <span class="math inline">\(\implies\)</span> ser verdadeira,
+<span class="math inline">\(P\)</span> deve ser <span
+class="math inline">\(Falso\)</span> ou <span
+class="math inline">\(Q\)</span> deve ser <span
+class="math inline">\(Verdade\)</span>, e para o <span
+class="math inline">\(\iff\)</span> precisamos que <span
+class="math inline">\(P\)</span> e <span
+class="math inline">\(Q\)</span> tenham o mesmo valor de verdade.</p>
+<h1 id="técnicas">Técnicas</h1>
+<p>Uma das técnicas comuns usadas em lógica proposicional é a
+tabela-verdade, uma representação tabular dos valores que uma proposição
+pode assumir dado os valores de verdade de seus componentes. A tabela
+abaixo ilustra isso para as proposições <span class="math inline">\(P
+\land Q\)</span>, <span class="math inline">\(P \lor Q\)</span>, <span
+class="math inline">\(P \implies Q\)</span>, <span
+class="math inline">\(P \iff Q\)</span> e <span
+class="math inline">\(\neg P\)</span></p>
+<div class="center">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span
+class="math inline">\(P\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(Q\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(P \land
+Q\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(P \lor
+Q\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(P \implies
+Q\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(P \iff
+Q\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\neg
+P\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Outra técnica comum é o uso de equivalências lógicas, isto é, o uso
+de regras conhecidas para simplificar ou transformar uma proposição em
+uma equivalente. Duas proposições são ditas logicamente equivalentes
+quando compartilham os mesmos valores de verdade para todas as
+combinações de <span class="math inline">\(P\)</span> e <span
+class="math inline">\(Q\)</span>, denotado <span class="math inline">\(P
+\equiv Q\)</span>. Algumas equivalências comuns são: <span
+class="math display">\[\neg(\neg P) \equiv P \quad \text{(Dupla
+Negação)}\]</span> <span class="math display">\[\neg(P \land Q) \equiv
+\neg P \lor \neg Q \quad \text{(Lei de De Morgan)}\]</span> <span
+class="math display">\[\neg(P \lor Q) \equiv \neg P \land \neg Q \quad
+\text{(Lei de De Morgan)}\]</span> <span class="math display">\[P
+\implies Q \equiv \neg P \lor Q \quad \text{(Equivalência da
+Implicação)}\]</span></p>
+<h1 id="problema">Problema</h1>
+<p>Dada a proposição <span class="math inline">\(\neg(P \land
+Q)\)</span>, conhecida como operador NAND e denotada <span
+class="math inline">\(P \uparrow Q\)</span>, cuja tabela-verdade é</p>
+<div class="center">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span
+class="math inline">\(P\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(Q\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(P \uparrow
+Q\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Você consegue expressar os operadores <span
+class="math inline">\(\neg\)</span>, <span
+class="math inline">\(\land\)</span> e <span
+class="math inline">\(\lor\)</span> usando apenas <span
+class="math inline">\(\uparrow\)</span>?</p>
+<h1 id="generalização">Generalização</h1>
+<p>O operador NAND não é o único operador com propriedades
+interessantes. O operador NOR, denotado <span class="math inline">\(P
+\downarrow Q\)</span> e definido como <span class="math inline">\(\neg(P
+\lor Q)\)</span>, é outro operador que pode ser construído a partir dos
+operadores que vimos. Sendo sua tabela-verdade</p>
+<div class="center">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span
+class="math inline">\(P\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(Q\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(P \downarrow
+Q\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Um conjunto de operadores é dito <em>funcionalmente completo</em> se
+toda proposição puder ser expressa usando apenas operadores desse
+conjunto. Por exemplo, o conjunto <span class="math inline">\(\{\neg,
+\land\}\)</span> é funcionalmente completo, pois podemos expressar <span
+class="math inline">\(\lor\)</span> usando a Lei de De Morgan: <span
+class="math display">\[P \lor Q \equiv \neg(\neg P \land \neg
+Q)\]</span></p>
+<p>Um resultado ainda mais surpreendente é que um único operador pode
+ser suficiente para expressar toda a lógica proposicional. Tal operador
+é chamado de <em>operador funcionalmente completo</em>. Uma pergunta
+natural a se fazer é se o operador NOR compartilha essa propriedade com
+o NAND, isto é, podemos expressar <span
+class="math inline">\(\neg\)</span>, <span
+class="math inline">\(\land\)</span> e <span
+class="math inline">\(\lor\)</span> usando apenas <span
+class="math inline">\(\downarrow\)</span>?</p>
+<h1 id="recursos">Recursos</h1>
+<p>Os recursos a seguir são recomendados para explorar a lógica
+proposicional e a completude funcional em maior profundidade.</p>
+<div class="thebibliography">
+<p><span>9</span></p>
+<h2 class="unnumbered" id="nível-introdutório">Nível Introdutório</h2>
+<p>Mortari, C. A. <em>Introdução à Lógica</em>. UNESP, 2001.</p>
+<p>Copi, I. M.; Cohen, C.; McMahon, K. <em>Introduction to Logic</em>,
+14th ed. Pearson, 2011.</p>
+<p>Priest, G. <em>Logic: A Very Short Introduction</em>. Oxford
+University Press, 2008.</p>
+<h2 class="unnumbered" id="nível-intermediário">Nível Intermediário</h2>
+<p>Alencar Filho, E. <em>Iniciação à Lógica Matemática</em>, 21ª ed.
+Nobel, 2002.</p>
+<p>Enderton, H. B. <em>A Mathematical Introduction to Logic</em>, 2nd
+ed. Academic Press, 2001.</p>
+<p>Barak, B. <em>Introduction to Theoretical Computer Science</em>.
+Disponível em: <a href="https://introtcs.org/public/"
+class="uri">https://introtcs.org/public/</a></p>
+<h2 class="unnumbered" id="nível-avançado">Nível Avançado</h2>
+<p>Mendelson, E. <em>Introduction to Mathematical Logic</em>, 6th ed.
+CRC Press, 2015.</p>
+<p>Machover, M. <em>Set Theory, Logic and Their Limitations</em>.
+Cambridge University Press, 1996.</p>
+</div>
+</body>
+</html>

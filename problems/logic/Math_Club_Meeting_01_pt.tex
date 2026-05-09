@@ -1,0 +1,202 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{url}
+\usepackage[brazilian]{babel}
+\title{Clube de Matemática --- Reunião 02}
+\author{Herom Silva}
+\date{Maio de 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Introdução}
+
+Neste documento, apresentamos como a segunda reunião do Clube de Matemática 
+é estruturado, junto com o problema central que guiará nossa discussão.
+Primeiro definiremos algumas notações que usaremos para enunciar o problema, 
+junto com possíveis técnicas para resolvê-lo, uma generalização do problema 
+e alguns recursos para explorá-lo com maior profundidade.
+\newpage
+\section{Notação}
+
+Aqui definiremos a notação que utilizaremos no problema. Em livros de Lógica 
+padrão veremos $P$ como uma proposição, isto é, uma sentença declarativa com 
+um valor de verdade definido como $Verdade$ ou $Falso$.
+
+Dizemos que $P$ tem valor $Verdade$ quando a proposição definida por $P$ 
+é verdadeira, sendo um exemplo
+$$ P = \text{A Terra é um planeta} $$
+$P$ é $Verdade$ porque a Terra é um planeta.
+
+Dizemos que $P$ tem valor $Falso$ quando a proposição definida por $P$ 
+é falsa, sendo um exemplo
+$$ P = \text{A Lua é feita de queijo}$$
+$P$ é $Falso$ porque a Lua não é feita de queijo.
+
+Podemos negar o valor de uma proposição pelo símbolo $\neg$ para obter 
+seu valor inverso. Como exemplo
+$$ P = \text{A Terra é um planeta}$$
+$$ \neg P = \text{A Terra não é um planeta}$$
+Pode-se criar uma nova proposição usando operadores lógicos como $\land$ 
+e $\lor$, que representam respectivamente o gramatical ``e'', ``ou''. 
+Como exemplo, podemos criar as seguintes proposições
+$$P = \text{A Terra é um planeta}$$
+$$Q = \text{Ela tem água}$$
+$$ P \land Q = \text{A Terra é um planeta e ela tem água} = Verdade$$
+$$P \lor Q = \text{A Terra é um planeta ou ela tem água} = Verdade$$
+
+Para uma proposição usando o operador $\land$ ser verdadeira, ambos $P$ 
+e $Q$ devem ser verdadeiros, e para o $\lor$ precisamos que $P$ ou $Q$ 
+sejam verdadeiros.
+
+Outros operadores conhecidos como operadores conectivos são $\implies$ e 
+$\iff$, eles representam respectivamente o gramatical ``se então'' e 
+``se e somente se''. Como exemplo podemos criar as seguintes proposições
+$$P = \text{Está chovendo}$$
+$$Q = \text{O chão está molhado}$$
+$$ P \implies Q = \text{Se está chovendo então o chão está molhado} = Verdade$$
+$$P \iff Q = \text{Está chovendo se e somente se o chão está molhado} = Falso$$
+Para uma proposição usando o operador $\implies$ ser verdadeira, $P$ deve 
+ser $Falso$ ou $Q$ deve ser $Verdade$, e para o $\iff$ precisamos que 
+$P$ e $Q$ tenham o mesmo valor de verdade.
+\newpage
+\section{Técnicas}
+
+Uma das técnicas comuns usadas em lógica proposicional é a tabela-verdade, 
+uma representação tabular dos valores que uma proposição pode assumir dado 
+os valores de verdade de seus componentes. A tabela abaixo ilustra isso 
+para as proposições $P \land Q$, $P \lor Q$, $P \implies Q$, $P \iff Q$ 
+e $\neg P$
+
+\begin{center}
+\begin{tabular}{|c c|c|c|c|c|c|}
+\hline
+$P$ & $Q$ & $P \land Q$ & $P \lor Q$ & $P \implies Q$ & $P \iff Q$ & $\neg P$\\
+\hline
+V & V & V & V & V & V & F \\
+V & F & F & V & F & F & F \\
+F & V & F & V & V & F & V \\
+F & F & F & F & V & V & V \\
+\hline
+\end{tabular}
+\end{center}
+
+Outra técnica comum é o uso de equivalências lógicas, isto é, o uso de 
+regras conhecidas para simplificar ou transformar uma proposição em uma 
+equivalente. Duas proposições são ditas logicamente equivalentes quando 
+compartilham os mesmos valores de verdade para todas as combinações de 
+$P$ e $Q$, denotado $P \equiv Q$. Algumas equivalências comuns são:
+$$\neg(\neg P) \equiv P \quad \text{(Dupla Negação)}$$
+$$\neg(P \land Q) \equiv \neg P \lor \neg Q \quad \text{(Lei de De Morgan)}$$
+$$\neg(P \lor Q) \equiv \neg P \land \neg Q \quad \text{(Lei de De Morgan)}$$
+$$P \implies Q \equiv \neg P \lor Q \quad \text{(Equivalência da Implicação)}$$
+\newpage
+\section{Problema}
+Dada a proposição $\neg(P \land Q)$, conhecida como operador NAND e 
+denotada $P \uparrow Q$, cuja tabela-verdade é
+
+\begin{center}
+\begin{tabular}{|c c|c|}
+\hline
+$P$ & $Q$ & $P \uparrow Q$\\
+\hline
+V & V & F \\
+V & F & V \\
+F & V & V \\
+F & F & V \\
+\hline
+\end{tabular}
+\end{center}
+
+Você consegue expressar os operadores $\neg$, $\land$ e $\lor$ 
+usando apenas $\uparrow$?
+\newpage
+\section{Generalização}
+O operador NAND não é o único operador com propriedades interessantes. 
+O operador NOR, denotado $P \downarrow Q$ e definido como $\neg(P \lor Q)$, 
+é outro operador que pode ser construído a partir dos operadores que vimos. 
+Sendo sua tabela-verdade
+
+\begin{center}
+\begin{tabular}{|c c|c|}
+\hline
+$P$ & $Q$ & $P \downarrow Q$\\
+\hline
+V & V & F \\
+V & F & F \\
+F & V & F \\
+F & F & V \\
+\hline
+\end{tabular}
+\end{center}
+
+Um conjunto de operadores é dito \textit{funcionalmente completo} se toda 
+proposição puder ser expressa usando apenas operadores desse conjunto. 
+Por exemplo, o conjunto $\{\neg, \land\}$ é funcionalmente completo, 
+pois podemos expressar $\lor$ usando a Lei de De Morgan:
+$$P \lor Q \equiv \neg(\neg P \land \neg Q)$$
+
+Um resultado ainda mais surpreendente é que um único operador pode ser 
+suficiente para expressar toda a lógica proposicional. Tal operador é 
+chamado de \textit{operador funcionalmente completo}. Uma pergunta natural 
+a se fazer é se o operador NOR compartilha essa propriedade com o NAND, 
+isto é, podemos expressar $\neg$, $\land$ e $\lor$ usando apenas $\downarrow$?
+\newpage
+\section{Recursos}
+
+Os recursos a seguir são recomendados para explorar a lógica proposicional 
+e a completude funcional em maior profundidade.
+
+\begin{thebibliography}{9}
+
+\subsection*{Nível Introdutório}
+
+\bibitem{mortari2001}
+Mortari, C. A.
+\textit{Introdução à Lógica}.
+UNESP, 2001.
+
+\bibitem{copi2011}
+Copi, I. M.; Cohen, C.; McMahon, K.
+\textit{Introduction to Logic}, 14th ed.
+Pearson, 2011.
+
+\bibitem{priest2008}
+Priest, G.
+\textit{Logic: A Very Short Introduction}.
+Oxford University Press, 2008.
+
+\subsection*{Nível Intermediário}
+
+\bibitem{alencar2002}
+Alencar Filho, E.
+\textit{Iniciação à Lógica Matemática}, 21ª ed.
+Nobel, 2002.
+
+\bibitem{enderton2001}
+Enderton, H. B.
+\textit{A Mathematical Introduction to Logic}, 2nd ed.
+Academic Press, 2001.
+
+\bibitem{barak2023}
+Barak, B.
+\textit{Introduction to Theoretical Computer Science}.
+Disponível em: \url{https://introtcs.org/public/}
+
+\subsection*{Nível Avançado}
+
+\bibitem{mendelson2015}
+Mendelson, E.
+\textit{Introduction to Mathematical Logic}, 6th ed.
+CRC Press, 2015.
+
+\bibitem{machover1996}
+Machover, M.
+\textit{Set Theory, Logic and Their Limitations}.
+Cambridge University Press, 1996.
+
+\end{thebibliography}
+
+\end{document}

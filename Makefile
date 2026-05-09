@@ -4,22 +4,17 @@
 #   Clube de Matemática — Knowledge Base
 #
 #   .md  (guidelines/, techniques/, explanations/, core-knowledge/,
-#          resources/, README.md)  →  pandoc    → HTML
-#   .tex (solutions/, problems/)   →  make4ht   → HTML  (htlatex como fallback)
+#          resources/, README.md)  →  pandoc  → HTML
+#   .tex (solutions/, problems/)   →  pandoc  → HTML  (--mathjax para fórmulas)
 #
-#   Dependências além do TeX Live existente: apenas pandoc.
+#   Dependência única para HTML: pandoc.
+#   make4ht/htlatex não são utilizados neste Makefile.
 # ═══════════════════════════════════════════════════════════════════════════════
 
 DOCS_DIR   := docs
 CSS_FILE   := $(DOCS_DIR)/style.css
 INDEX_HTML := $(DOCS_DIR)/index.html
 
-LATEX_PACKAGES = \
-    inputenc lmodern fontenc geometry xcolor \
-    amsmath amssymb amsthm mathtools \
-    hyperref mdframed tcolorbox
-
-LATEX_PACKAGE_FILES = $(addsuffix .sty,$(LATEX_PACKAGES))
 
 # ─── Detecção de OS (mesmo padrão do Estatuto) ────────────────────────────────
 ifeq ($(OS),Windows_NT)
@@ -71,51 +66,20 @@ check-deps:
 	@echo "Verificando dependências..."
 	@command -v pandoc >/dev/null 2>&1 \
 	    || { echo "ERRO: pandoc não encontrado. Execute 'make install-deps'."; exit 1; }
-	@command -v kpsewhich >/dev/null 2>&1 \
-	    || { echo "ERRO: kpsewhich não encontrado. A instalação do TeX está incompleta."; exit 1; }
-	@{ command -v make4ht >/dev/null 2>&1 \
-	   || command -v htlatex >/dev/null 2>&1; } \
-	    || { echo "ERRO: make4ht/htlatex não encontrado. Instale texlive-full."; exit 1; }
-	@missing=""; \
-	for pkg in $(LATEX_PACKAGE_FILES); do \
-	    if ! kpsewhich "$$pkg" >/dev/null 2>&1; then \
-	        missing="$$missing $$pkg"; \
-	    fi; \
-	done; \
-	if [ -n "$$missing" ]; then \
-	    echo "ERRO: Pacotes LaTeX ausentes:$$missing"; \
-	    echo "Execute 'make install-deps'."; \
-	    exit 1; \
-	fi
 	@echo "  ✓ Todas as dependências OK!"
 
 install-deps:
 	@echo "=== Clube de Matemática — Instalação de dependências ($(OS_NAME)) ==="
 	@echo ""
-	@echo "  pandoc (única dep nova em relação ao Estatuto):"
+	@echo "  pandoc (única dependência para geração de HTML):"
 	@echo "    Linux   : sudo apt install pandoc"
 	@echo "    macOS   : brew install pandoc"
 	@echo "    Windows : https://pandoc.org/installing.html"
 	@echo ""
-	@echo "  TeX Live / make4ht (já exigido pelo Estatuto):"
-	@echo "    Linux   : sudo apt install texlive-full"
-	@echo "    macOS   : brew install --cask mactex"
-	@echo "    Windows : https://miktex.org"
-	@echo ""
-	@if command -v tlmgr >/dev/null 2>&1; then \
-	    echo "  Tentando instalar pacotes LaTeX via tlmgr..."; \
-	    tlmgr install $(LATEX_PACKAGES) || \
-	        echo "  ATENÇÃO: se falhou no Linux, use o gerenciador da sua distro."; \
-	elif command -v miktex >/dev/null 2>&1; then \
-	    for pkg in $(LATEX_PACKAGES); do \
-	        miktex packages install "$$pkg" || true; \
-	    done; \
-	else \
-	    echo "  Nenhum gerenciador TeX encontrado. Instale manualmente."; \
-	fi
-	@echo "  ✓ Processo de instalação finalizado!"
+	@echo "  Nota: make4ht/htlatex não são utilizados neste Makefile."
+	@echo "        O TeX Live continua necessário apenas se quiser gerar PDF."
 
-# ─── CSS compartilhado (aplicado aos .md; os .tex geram o próprio) ────────────
+# ─── CSS compartilhado (aplicado a todos os arquivos via pandoc) ──────────────
 $(CSS_FILE):
 	@mkdir -p $(DOCS_DIR)
 	@echo "Gerando stylesheet..."
@@ -174,23 +138,21 @@ $(DOCS_DIR)/%.html: %.md $(CSS_FILE)
 	    --metadata lang=pt-BR                       \
 	    --css="$$REL_CSS"
 
-# ─── TEX → HTML (make4ht / htlatex — mesmo que o Estatuto) ───────────────────
-$(DOCS_DIR)/%.html: %.tex
+# ─── TEX → HTML (pandoc + mathjax — tolerante a LaTeX não-estrito) ───────────
+$(DOCS_DIR)/%.html: %.tex $(CSS_FILE)
 	@mkdir -p $(dir $@)
 	@echo "  [tex] $<"
-	@if command -v make4ht >/dev/null 2>&1; then           \
-	    cd "$(dir $<)" &&                                   \
-	    make4ht -d "$(abspath $(dir $@))" "$(notdir $<)";  \
-	else                                                    \
-	    cd "$(dir $<)" &&                                   \
-	    htlatex "$(notdir $<)" "" "" ""                     \
-	        "-d$(abspath $(dir $@))/";                      \
-	fi
-	@# Corrige encoding legado (mesmo tratamento do Estatuto)
-	@if [ -f "$@" ] && file "$@" 2>/dev/null | grep -q "ISO-8859"; then \
-	    iconv -f iso-8859-1 -t utf-8 "$@" -o "$@.tmp" && mv "$@.tmp" "$@"; \
-	    sed -i 's/charset=iso-8859-1/charset=utf-8/g' "$@";               \
-	fi
+	@DEPTH=$$(echo "$(dir $@)" | tr -cd '/' | wc -c); \
+	REL_CSS=$$(python3 -c \
+	    "import os; print(os.path.relpath('$(CSS_FILE)', '$(dir $@)'))" \
+	    2>/dev/null || \
+	    printf '../%.0s' $$(seq 1 $$(($$DEPTH - 1))) && printf 'style.css'); \
+	pandoc "$<" -o "$@"                             \
+	    --standalone                                 \
+	    --metadata title="$(basename $(notdir $<))" \
+	    --metadata lang=pt-BR                       \
+	    --mathjax                                    \
+	    --css="$$REL_CSS"
 
 # ─── index.html navegável (shell puro — sem python3) ─────────────────────────
 $(INDEX_HTML): $(MD_TARGETS) $(TEX_TARGETS) $(CSS_FILE)
@@ -294,5 +256,5 @@ help:
 	@echo "Uso típico (primeira vez):"
 	@echo "  make install-deps && make"
 	@echo ""
-	@echo "Dependência nova em relação ao Estatuto:"
-	@echo "  pandoc  — converte .md → HTML"
+	@echo "Dependência única para HTML:"
+	@echo "  pandoc  — converte tanto .md quanto .tex → HTML"
