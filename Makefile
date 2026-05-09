@@ -127,11 +127,8 @@ $(CSS_FILE):
 $(DOCS_DIR)/%.html: %.md $(CSS_FILE)
 	@mkdir -p $(dir $@)
 	@echo "  [md]  $<"
-	@DEPTH=$$(echo "$(dir $@)" | tr -cd '/' | wc -c); \
-	REL_CSS=$$(python3 -c \
-	    "import os; print(os.path.relpath('$(CSS_FILE)', '$(dir $@)'))" \
-	    2>/dev/null || \
-	    printf '../%.0s' $$(seq 1 $$(($$DEPTH - 1))) && printf 'style.css'); \
+	@REL_CSS=$$(python3 -c \
+	    "import os; print(os.path.relpath('$(CSS_FILE)', '$(dir $@)'))"); \
 	pandoc "$<" -o "$@"                             \
 	    --standalone                                 \
 	    --metadata title="$(basename $(notdir $<))" \
@@ -142,16 +139,14 @@ $(DOCS_DIR)/%.html: %.md $(CSS_FILE)
 $(DOCS_DIR)/%.html: %.tex $(CSS_FILE)
 	@mkdir -p $(dir $@)
 	@echo "  [tex] $<"
-	@DEPTH=$$(echo "$(dir $@)" | tr -cd '/' | wc -c); \
-	REL_CSS=$$(python3 -c \
-	    "import os; print(os.path.relpath('$(CSS_FILE)', '$(dir $@)'))" \
-	    2>/dev/null || \
-	    printf '../%.0s' $$(seq 1 $$(($$DEPTH - 1))) && printf 'style.css'); \
+	@REL_CSS=$$(python3 -c \
+	    "import os; print(os.path.relpath('$(CSS_FILE)', '$(dir $@)'))"); \
 	pandoc "$<" -o "$@"                             \
+	    --from latex                                 \
 	    --standalone                                 \
 	    --metadata title="$(basename $(notdir $<))" \
 	    --metadata lang=pt-BR                       \
-	    --mathjax                                    \
+	    --mathjax=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js \
 	    --css="$$REL_CSS"
 
 # ─── index.html navegável (shell puro — sem python3) ─────────────────────────

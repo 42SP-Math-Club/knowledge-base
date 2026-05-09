@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Herom Silva" />
+  <title>clube_matematica_reuniao_00_pt</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../../style.css" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">clube_matematica_reuniao_00_pt</h1>
+<p class="author">Herom Silva</p>
+<p class="date">Abril de 2026</p>
+</header>
+<h1 id="introdução">Introdução</h1>
+<p>Este documento descreve a primeira reunião do Clube de Matemática e o
+problema que será abordado nela. Será uma reunião de uma hora e trinta
+minutos discutindo o problema descrito na seção Problema, que trata de
+uma representação matemática de Máscaras de Bits. Começaremos com uma
+introdução à representação de números binários.</p>
+<h1 id="problema">Problema</h1>
+<p>Seja <span class="math inline">\(U\)</span> um conjunto universal
+finito contendo cinco variáveis: <span class="math display">\[U =
+\{x_0,\, x_1,\, x_2,\, x_3,\, x_4\}\]</span></p>
+<p>Seja <span class="math inline">\(S\)</span> qualquer subconjunto de
+<span class="math inline">\(U\)</span> (ou seja, <span
+class="math inline">\(S \subseteq U\)</span>). Definimos uma função
+característica <span class="math inline">\(f(S)\)</span>, que mapeia um
+conjunto <span class="math inline">\(S\)</span> para uma cadeia binária
+de 5 bits.</p>
+<p>A função avalia os elementos de <span
+class="math inline">\(S\)</span> usando uma condição lógica para gerar
+cada bit <span class="math inline">\(b_i\)</span> da cadeia <span
+class="math inline">\(b_4b_3b_2b_1b_0\)</span>: <span
+class="math display">\[b_i =
+\begin{cases}
+    1 &amp; \text{se } x_i \in S \\
+    0 &amp; \text{se } x_i \notin S
+\end{cases}\]</span></p>
+<p>(Nota: <span class="math inline">\(b_0\)</span> representa o bit mais
+à direita/menos significativo, correspondente a <span
+class="math inline">\(x_0\)</span>.)</p>
+<p>São dados dois subconjuntos específicos de <span
+class="math inline">\(U\)</span>: <span class="math display">\[A =
+\{x_0,\, x_2,\, x_3\}\]</span> <span class="math display">\[B = \{x_1,\,
+x_2,\, x_4\}\]</span></p>
+<ol>
+<li><p>Qual é <span class="math inline">\(f(A)\)</span>?</p></li>
+<li><p>Qual é <span class="math inline">\(f(B)\)</span>?</p></li>
+</ol>
+</body>
+</html>

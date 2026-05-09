@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>resume_00</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../../style.css" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">resume_00</h1>
+</header>
+<div class="center">
+<p><span><span class="math inline">\(\Sigma\)</span></span><br />
+<span><strong>Reunião #000</strong></span><br />
+<span>Sessão Teste — Clube de Matemática @ 42 São Paulo</span><br />
+</p>
+<hr />
+<p><br />
+<span>30 de abril de 2026</span></p>
+</div>
+<div class="infobox">
+<p><strong>Formato:</strong> Exploração coletiva sem cronômetro<br />
+<strong>Tema:</strong> Questão proposta pelo grupo — generalização de
+conversões de base numérica<br />
+<strong>Referências externas consultadas:</strong> Nenhuma</p>
+</div>
+<h1 id="apresentações">Apresentações</h1>
+<p>A sessão começou com cada membro apresentando seu nível de contato
+com a matemática — do ensino médio a graduações em exatas. Não houve
+hierarquia nisso: o objetivo era entender de onde cada um parte, não
+classificar quem sabe mais.</p>
+<p>Essa diversidade foi imediatamente útil. Ao longo da sessão, quem
+tinha mais base ajudava naturalmente quem tinha menos, sem que isso
+precisasse ser organizado.</p>
+<h1 id="o-problema">O Problema</h1>
+<p>O problema da sessão foi uma representação matemática de <em>Bit
+Masking</em> — tema diretamente ligado ao cursus da 42.</p>
+<p>Seja <span class="math inline">\(U\)</span> um conjunto universal
+finito com cinco variáveis: <span class="math display">\[U = \{x_0,\,
+x_1,\, x_2,\, x_3,\, x_4\}\]</span></p>
+<p>Seja <span class="math inline">\(S\)</span> qualquer subconjunto de
+<span class="math inline">\(U\)</span> (ou seja, <span
+class="math inline">\(S \subseteq U\)</span>). Definimos uma função
+característica <span class="math inline">\(f(S)\)</span> que mapeia um
+conjunto <span class="math inline">\(S\)</span> para uma string binária
+de 5 bits.</p>
+<p>A função avalia os elementos de <span
+class="math inline">\(S\)</span> usando uma condição lógica para gerar
+cada bit <span class="math inline">\(b_i\)</span> da string <span
+class="math inline">\(b_4b_3b_2b_1b_0\)</span>: <span
+class="math display">\[b_i =
+\begin{cases}
+    1 &amp; \text{se } x_i \in S \\
+    0 &amp; \text{se } x_i \notin S
+\end{cases}\]</span></p>
+<p>(Nota: <span class="math inline">\(b_0\)</span> representa o bit
+menos significativo, à direita, correspondente a <span
+class="math inline">\(x_0\)</span>.)</p>
+<p>Dados os subconjuntos: <span class="math display">\[A = \{x_0,\,
+x_2,\, x_3\} \qquad B = \{x_1,\, x_2,\, x_4\}\]</span></p>
+<ol>
+<li><p>Qual é <span class="math inline">\(f(A)\)</span>?</p></li>
+<li><p>Qual é <span class="math inline">\(f(B)\)</span>?</p></li>
+</ol>
+<h1 id="como-a-sessão-aconteceu">Como a Sessão Aconteceu</h1>
+<p>Ninguém sabia a resposta de antemão. O que aconteceu foi uma
+<strong>pesquisa matemática coletiva e lenta</strong> — no bom sentido.
+Cada pessoa precisava externalizar seus pensamentos, suas ideias e,
+principalmente, suas dúvidas.</p>
+<div class="citacao">
+<p>“Nah, eu não sabia qual símbolo usar” — então só escreve por extenso
+mesmo, tipo: “3 está no conjunto dos naturais”. A ideia é externalizar o
+que sabe, para assim os outros poderem aprender, ajudar e
+acompanhar.</p>
+</div>
+<p>Quando a notação faltava, o grupo simplesmente inventava a própria. A
+formalização veio depois, como abstração do que já havia sido pensado —
+da mesma forma que a matemática foi construída historicamente.</p>
+<p>Não houve professor. Não houve cronômetro. O modelo foi o da
+<strong>Grécia antiga</strong>: pensar em voz alta, divergir, questionar
+e reconstruir o raciocínio coletivamente.</p>
+<h1 id="o-raciocínio">O Raciocínio</h1>
+<p>O raciocínio foi construído em três etapas, cada uma surgindo
+naturalmente da anterior.</p>
+<h2 id="etapa-1-representação-binária-herom">Etapa 1 — Representação
+Binária (Herom)</h2>
+<p>Herom começou desenhando e indagando: como representar formalmente se
+um elemento pertence ou não a um conjunto? A resposta imediata foi a
+função característica binária, que o grupo escreveu assim:</p>
+<p><span class="math display">\[b_i = \begin{cases} 1 &amp; \text{se }
+x_i \in S \\ 0 &amp; \text{se } x_i \notin S \end{cases}\]</span></p>
+<p>Esse é exatamente o <span class="math inline">\(f(S)\)</span> do
+problema. Cada bit <span class="math inline">\(b_i\)</span> registra a
+presença ou ausência de <span class="math inline">\(x_i\)</span> no
+subconjunto <span class="math inline">\(S\)</span>.</p>
+<h2 id="etapa-2-generalização-para-base-3-breno">Etapa 2 — Generalização
+para Base 3 (Breno)</h2>
+<p>A primeira ideia de generalização veio do Breno: e se o conjunto
+<span class="math inline">\(S\)</span> fosse <em>ordenado</em>? Um
+elemento poderia estar presente de duas formas distintas — presente sem
+ordem, ou presente e sendo o elemento de maior posição. Isso
+naturalmente pede uma terceira condição, e portanto uma base 3:</p>
+<p><span class="math display">\[T_i = \begin{cases} 0 &amp; \text{se }
+x_i \notin S \\ 1 &amp; \text{se } x_i \in S \text{ e não está ordenado}
+\\ 2 &amp; \text{se } x_i \in S \text{ e está ordenado (é o último)}
+\end{cases}\]</span></p>
+<p>Com isso, a string resultante deixa de ser binária e passa a ser
+ternária — cada dígito carrega mais informação sobre a estrutura do
+conjunto.</p>
+<h2 id="etapa-3-generalização-para-base-m-felipe-atoi_base">Etapa 3 —
+Generalização para Base <span class="math inline">\(m\)</span> (Felipe /
+<code>atoi_base</code>)</h2>
+<p>A partir da ideia do <code>atoi_base</code> trazida por Felipe —
+função que converte strings para inteiros em bases arbitrárias — o grupo
+percebeu que as etapas anteriores eram casos particulares de uma função
+mais geral.</p>
+<p>Para qualquer base <span class="math inline">\(m\)</span>, define-se
+<span class="math inline">\(R_i\)</span> como:</p>
+<p><span class="math display">\[R_i: \begin{cases}
+  n = \dfrac{x_i}{m} \\[6pt]
+  n_i = 0 &amp; \text{se } x_i \notin S \\[4pt]
+  n_i = 1 &amp; \text{se } x_i \in S \text{ (sendo } m \text{ a base de
+} S\text{)} \\[4pt]
+  n_j = \dfrac{x_j}{m} &amp; \text{se } x_i \text{ for o último
+elemento}
+\end{cases}\]</span></p>
+<p>O exemplo produzido no quadro foi <span class="math inline">\(\{x_1,
+x_0, x_3\}\)</span>, aplicando <span class="math inline">\(R_i\)</span>
+sobre esse subconjunto ordenado.</p>
+<p>A conexão com <code>atoi_base</code> foi o que permitiu enxergar a
+estrutura geral: assim como <code>atoi</code> reconstrói um número a
+partir de seus dígitos em uma base qualquer, <span
+class="math inline">\(R_i\)</span> constrói uma representação posicional
+a partir da pertinência e ordem dos elementos em <span
+class="math inline">\(S\)</span>.</p>
+<div class="infobox">
+<p>O problema, a generalização para base 3 e a função <span
+class="math inline">\(R_i\)</span> foram inteiramente inventados pelo
+grupo durante a sessão. Nenhuma referência externa foi consultada.</p>
+</div>
+<div class="tcolorbox">
+<p><strong>Nota:</strong> A Etapa 3 não foi verificada. O grupo chegou
+até essa formulação, mas ainda não houve tempo para pensar com cuidado
+se ela está correta ou completa. Pode ser que fique como ponto de
+partida para a próxima sessão.</p>
+</div>
+<h1 id="observações-sobre-o-formato">Observações sobre o Formato</h1>
+<p>Esta primeira sessão também serviu para apresentar o Estatuto do
+clube e discutir sua filosofia. Alguns pontos que emergiram na
+prática:</p>
+<ul>
+<li><p>Pessoas sem base matemática formal conseguem fazer perguntas que
+avançam a discussão tanto quanto quem tem;</p></li>
+<li><p>A ausência de pesquisa durante a sessão não foi uma limitação —
+foi o que tornou o pensamento genuinamente coletivo;</p></li>
+<li><p>Inventar notação antes de formalizá-la revelou <em>por que</em> a
+notação matemática existe do jeito que existe.</p></li>
+</ul>
+<div class="citacao">
+<p>A ideia é aprender do “por que” a matemática foi desenhada do jeito
+que é hoje — descobrindo, igual como os matemáticos antigamente
+faziam.</p>
+</div>
+<h1 id="próximos-passos">Próximos Passos</h1>
+<p>A ideia que ficou: cada membro deve mergulhar em textos, livros e
+referências <strong>antes</strong> da próxima sessão — não para chegar
+com a resposta, mas para chegar com pensamentos, dúvidas e ideias que
+alimentem a discussão.</p>
+<p>O tema da próxima sessão emergirá do backlog coletivo.</p>
+</body>
+</html>

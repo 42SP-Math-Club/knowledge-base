@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{graphicx} % Necessário para inserir imagens
+\usepackage{amsmath}  % Para o ambiente cases
+\usepackage{parskip}  % Sem recuo de parágrafo, espaço entre parágrafos
+\usepackage[brazil]{babel} % Português brasileiro
+
+\title{Clube de Matemática — Reunião 00}
+\author{Herom Silva}
+\date{Abril de 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Introdução}
+Este documento descreve a primeira reunião do Clube de Matemática e o problema que será abordado nela. Será uma reunião de uma hora e trinta minutos discutindo o problema descrito na seção Problema, que trata de uma representação matemática de Máscaras de Bits. Começaremos com uma introdução à representação de números binários.
+
+\section{Problema}
+
+Seja $U$ um conjunto universal finito contendo cinco variáveis:
+$$U = \{x_0,\, x_1,\, x_2,\, x_3,\, x_4\}$$
+
+Seja $S$ qualquer subconjunto de $U$ (ou seja, $S \subseteq U$). Definimos uma função característica $f(S)$, que mapeia um conjunto $S$ para uma cadeia binária de 5 bits.
+
+A função avalia os elementos de $S$ usando uma condição lógica para gerar cada bit $b_i$ da cadeia $b_4b_3b_2b_1b_0$:
+$$
+b_i =
+\begin{cases}
+    1 & \text{se } x_i \in S \\
+    0 & \text{se } x_i \notin S
+\end{cases}
+$$
+
+(Nota: $b_0$ representa o bit mais à direita/menos significativo, correspondente a $x_0$.)
+
+São dados dois subconjuntos específicos de $U$:
+$$A = \{x_0,\, x_2,\, x_3\}$$
+$$B = \{x_1,\, x_2,\, x_4\}$$
+
+\begin{enumerate}
+    \item Qual é $f(A)$?
+    \item Qual é $f(B)$?
+\end{enumerate}
+
+\end{document}
